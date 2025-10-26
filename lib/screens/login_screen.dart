@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart'; // Adicione esta linha
+import 'package:firebase_auth/firebase_auth.dart';
 import '../services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -20,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() => _isLoading = true);
 
       try {
-        User? user; // Agora a classe User é reconhecida
+        User? user;
         if (_isLogin) {
           user = await _auth.signInWithEmailAndPassword(
             _emailController.text,
@@ -73,6 +73,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 20),
               TextFormField(
+                key: Key('emailField'), // KEY PARA TESTES
                 controller: _emailController,
                 decoration: InputDecoration(
                   labelText: 'Email',
@@ -82,6 +83,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               SizedBox(height: 10),
               TextFormField(
+                key: Key('passwordField'), // KEY PARA TESTES
                 controller: _passwordController,
                 decoration: InputDecoration(
                   labelText: 'Senha',
@@ -118,3 +120,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+

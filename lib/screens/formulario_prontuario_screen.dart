@@ -50,7 +50,6 @@ class _FormularioProntuarioScreenState
             data: DateTime.now(),
           );
           await _service.adicionarProntuario(prontuario);
-          print('✅ Prontuário criado: ${prontuario.paciente}');
         } else {
           final prontuarioAtualizado = widget.prontuario!.copyWith(
             paciente: _pacienteController.text,
@@ -58,7 +57,6 @@ class _FormularioProntuarioScreenState
             data: DateTime.now(),
           );
           await _service.atualizarProntuario(prontuarioAtualizado);
-          print('✅ Prontuário atualizado: ${prontuarioAtualizado.paciente}');
         }
 
         Navigator.pop(context);
@@ -90,6 +88,7 @@ class _FormularioProntuarioScreenState
           child: Column(
             children: [
               TextFormField(
+                key: Key('pacienteField'), // KEY PARA TESTES
                 maxLength: 50,
                 controller: _pacienteController,
                 decoration: InputDecoration(
@@ -101,6 +100,7 @@ class _FormularioProntuarioScreenState
               ),
               SizedBox(height: 16),
               TextFormField(
+                key: Key('descricaoField'), // KEY PARA TESTES
                 maxLength: 100,
                 controller: _descricaoController,
                 decoration: InputDecoration(

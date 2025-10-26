@@ -51,6 +51,12 @@ class AuthService {
     return _auth.currentUser;
   }
 
+  // ADICIONE ESTE MÉTODO PARA VALIDAÇÃO DE EMAIL
+  bool validateEmail(String email) {
+    final regex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    return regex.hasMatch(email);
+  }
+
   String _getAuthErrorMessage(String code) {
     switch (code) {
       case 'configuration-not-found':
